@@ -65,20 +65,19 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 4 ms  
-**Memory:** 42.8 MB  
-**Submitted:** 2026-08-24T12:29:28.034Z  
+**Memory:** 42.7 MB  
+**Submitted:** 2026-08-24T12:28:42.386Z  
 
 ```java
-            if(prefix[i]>1&&prefix[i]>max){
+        for(int i=l-2;i>=0;i--)
+        {
+            if(prefix[i]>1){
                 in=i;
                 max=prefix[i];
             }
         }
         if(in==l-1)
             return max;
-        {
-        for(int i=l-2;i>=0;i--)
-        int max=prefix[l-1],in=l-1;
 
 ```
 
