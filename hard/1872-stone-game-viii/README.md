@@ -64,24 +64,24 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 4 ms  
-**Memory:** 42.5 MB  
-**Submitted:** 2026-08-24T12:31:53.588Z  
+**Runtime:** 0 ms  
+**Memory:** 42.7 MB  
+**Submitted:** 2026-08-24T12:38:26.965Z  
 
 ```java
-            in=i;
-            max=prefix[i];
-        {
-        for(int i=l-1;i>=0;i--)
-            if(max>1)
-                break;
-        int max=prefix[l-1],in=l-1;
-        //     return prefix[l-1];
-        
+        for (int i = n - 2; i >= 1; i--) {
+        // Try every possible point where the game can be split
+
+        int ans = prefix[n - 1];
+        // Initially, consider taking all stones
+
         }
-        if(in==l-1)
-            return max;
-        System.out.println("Max : "+max+" in : "+in);
+            prefix[i] = prefix[i - 1] + s[i];
+
+        for (int i = 1; i < n; i++) {
+        prefix[0] = s[0];
+        int[] prefix = new int[n];
+        // Calculate prefix sums
 
 ```
 
