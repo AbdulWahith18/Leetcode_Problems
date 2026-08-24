@@ -66,16 +66,15 @@ Constraints:
 **Language:** Java  
 **Runtime:** 2 ms  
 **Memory:** 42.7 MB  
-**Submitted:** 2026-08-24T12:39:15.149Z  
+**Submitted:** 2026-08-24T12:39:39.111Z  
 
 ```java
             prefix[i] = prefix[i - 1] + s[i];
-        }
-        for(int i:s)
         for (int i = 1; i < n; i++) {
 
         int[] prefix = new int[n];
         prefix[0] = s[0];
+        }
 
 ```
 
