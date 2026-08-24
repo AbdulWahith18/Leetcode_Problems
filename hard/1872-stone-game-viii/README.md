@@ -64,23 +64,36 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 5 ms  
-**Memory:** 42.5 MB  
-**Submitted:** 2026-08-24T12:44:37.479Z  
+**Runtime:** 2600 ms (beats 5.11%)  
+**Memory:** 86.9 MB (beats 56.17%)  
+**Submitted:** 2026-08-24T12:45:56.387Z  
 
 ```java
-        System.out.println();
-        // Try every possible point where the game can be split
-        for (int i = n - 2; i >= 1; i--) {
-            System.out.println(ans+" "+(prefix[i]-ans));
-            ans = Math.max(ans, prefix[i] - ans);
-        int ans = prefix[n - 1];
-        // Initially, consider taking all stones
-            System.out.print(i+" ");
-        for(int i:prefix)
-        }
-            prefix[i] = prefix[i - 1] + s[i];
+class Solution {
+    public int stoneGameVIII(int[] s) {
+        int n = s.length;
 
+        // Calculate prefix sums
+        int[] prefix = new int[n];
+        prefix[0] = s[0];
+
+        for (int i = 1; i < n; i++) {
+            prefix[i] = prefix[i - 1] + s[i];
+        }
+        for(int i:prefix)
+            System.out.print(i+" ");
+        // Initially, consider taking all stones
+        int ans = prefix[n - 1];
+        System.out.println();
+        // Try every possible point where the game can be split
+        for (int i = n - 2; i >= 1; i--) {
+            System.out.println(ans+" "+(prefix[i]-ans));
+            ans = Math.max(ans, prefix[i] - ans);
+        }
+
+        return ans;
+    }
+}
 ```
 
 ---
