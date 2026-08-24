@@ -1,6 +1,10 @@
-        // if(prefix[l-1]>prefix[l-2])
-        //     return prefix[l-1];
-        int max=prefix[0],in=0;
-        for(int i=0;i<l;i++)
+            if(prefix[i]>1&&prefix[i]>max){
+                in=i;
+                max=prefix[i];
+            }
+        }
+        if(in==l-1)
+            return max;
         {
-            if(prefix[i]>max&&prefix[i]>1){
+        for(int i=l-2;i>=0;i--)
+        int max=prefix[l-1],in=l-1;
