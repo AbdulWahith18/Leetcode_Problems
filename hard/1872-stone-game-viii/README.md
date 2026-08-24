@@ -64,24 +64,18 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
+**Runtime:** 2 ms  
 **Memory:** 42.7 MB  
-**Submitted:** 2026-08-24T12:38:26.965Z  
+**Submitted:** 2026-08-24T12:39:15.149Z  
 
 ```java
-        for (int i = n - 2; i >= 1; i--) {
-        // Try every possible point where the game can be split
-
-        int ans = prefix[n - 1];
-        // Initially, consider taking all stones
-
-        }
             prefix[i] = prefix[i - 1] + s[i];
-
+        }
+        for(int i:s)
         for (int i = 1; i < n; i++) {
-        prefix[0] = s[0];
+
         int[] prefix = new int[n];
-        // Calculate prefix sums
+        prefix[0] = s[0];
 
 ```
 
