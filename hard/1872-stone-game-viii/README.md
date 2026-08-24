@@ -64,17 +64,21 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 2 ms  
+**Runtime:** 5 ms  
 **Memory:** 42.7 MB  
-**Submitted:** 2026-08-24T12:39:39.111Z  
+**Submitted:** 2026-08-24T12:43:16.732Z  
 
 ```java
-            prefix[i] = prefix[i - 1] + s[i];
-        for (int i = 1; i < n; i++) {
 
-        int[] prefix = new int[n];
-        prefix[0] = s[0];
+        // Try every possible point where the game can be split
+        for (int i = n - 2; i >= 1; i--) {
+            System.out.println(ans+" "+(prefix[i]-ans));
+            ans = Math.max(ans, prefix[i] - ans);
         }
+
+        return ans;
+    }
+}
 
 ```
 
