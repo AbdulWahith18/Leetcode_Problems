@@ -1,6 +1,6 @@
         // if(prefix[l-1]>prefix[l-2])
-        }
-            prefix[i]=prefix[i-1]+s[i];
+        //     return prefix[l-1];
+        int max=prefix[0],in=0;
+        for(int i=0;i<l;i++)
         {
-        for(int i:prefix)
-            System.out.println(i+" ");
+            if(prefix[i]>max&&prefix[i]>1){
