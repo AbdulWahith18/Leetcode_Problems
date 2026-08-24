@@ -64,17 +64,17 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 4 ms  
-**Memory:** 42.8 MB  
-**Submitted:** 2026-08-24T12:26:16.362Z  
+**Runtime:** 3 ms  
+**Memory:** 42.7 MB  
+**Submitted:** 2026-08-24T12:26:26.589Z  
 
 ```java
         // if(prefix[l-1]>prefix[l-2])
-        }
-            prefix[i]=prefix[i-1]+s[i];
+        //     return prefix[l-1];
+        int max=prefix[0],in=0;
+        for(int i=0;i<l;i++)
         {
-        for(int i:prefix)
-            System.out.println(i+" ");
+            if(prefix[i]>max&&prefix[i]>1){
 
 ```
 
