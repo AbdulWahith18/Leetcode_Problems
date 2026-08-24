@@ -64,30 +64,17 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.7 MB  
-**Submitted:** 2026-08-24T12:22:23.001Z  
+**Runtime:** 3 ms  
+**Memory:** 42.8 MB  
+**Submitted:** 2026-08-24T12:24:56.687Z  
 
 ```java
-        if(prefix[l-1]>prefix[l-2])
-            return prefix[l-1];
-        int max=prefix[0],in=0;
-        for(int i=0;i<l;i++)
-        {
-            if(prefix[i]>max&&prefix[i]>1){
-        }
                 max=prefix[i];
-                in=i;
             }
-        for(int i=in;i<l;i++)
+        }
+        System.out.println("Max : "+max+" in : "+in);
         int sum=max;
-        }
-        {
-            sum+=s[i];
-        }
-        return max-sum;
-    }
-}
+        for(int i=in+1;i<l;i++)
 
 ```
 
