@@ -65,20 +65,21 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 5 ms  
-**Memory:** 42.7 MB  
-**Submitted:** 2026-08-24T12:43:16.732Z  
+**Memory:** 42.5 MB  
+**Submitted:** 2026-08-24T12:44:37.479Z  
 
 ```java
-
+        System.out.println();
         // Try every possible point where the game can be split
         for (int i = n - 2; i >= 1; i--) {
             System.out.println(ans+" "+(prefix[i]-ans));
             ans = Math.max(ans, prefix[i] - ans);
+        int ans = prefix[n - 1];
+        // Initially, consider taking all stones
+            System.out.print(i+" ");
+        for(int i:prefix)
         }
-
-        return ans;
-    }
-}
+            prefix[i] = prefix[i - 1] + s[i];
 
 ```
 
