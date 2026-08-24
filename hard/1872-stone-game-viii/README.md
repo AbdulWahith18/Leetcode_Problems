@@ -66,15 +66,11 @@ Constraints:
 **Language:** Java  
 **Runtime:** 3 ms  
 **Memory:** 42.8 MB  
-**Submitted:** 2026-08-24T12:24:56.687Z  
+**Submitted:** 2026-08-24T12:23:50.866Z  
 
 ```java
                 max=prefix[i];
             }
-        }
-        System.out.println("Max : "+max+" in : "+in);
-        int sum=max;
-        for(int i=in+1;i<l;i++)
 
 ```
 
