@@ -5,7 +5,7 @@ class Solution {
         HashSet<Integer> h2=new HashSet<>();
         int i=0,j=0;
         int x=nums1.length,y=nums2.length;
-        while(i<x&&j<y)
+        while(i<x||j<y)
         {
             if(i<x)
                 h1.add(nums1[i++]);
