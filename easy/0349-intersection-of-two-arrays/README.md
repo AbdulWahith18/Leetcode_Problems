@@ -30,9 +30,9 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.9 MB  
-**Submitted:** 2026-08-25T13:20:56.456Z  
+**Runtime:** 4 ms (beats 29.18%)  
+**Memory:** 45.3 MB (beats 12.52%)  
+**Submitted:** 2026-08-25T13:21:05.032Z  
 
 ```java
 class Solution {
@@ -42,7 +42,7 @@ class Solution {
         HashSet<Integer> h2=new HashSet<>();
         int i=0,j=0;
         int x=nums1.length,y=nums2.length;
-        while(i<x&&j<y)
+        while(i<x||j<y)
         {
             if(i<x)
                 h1.add(nums1[i++]);
