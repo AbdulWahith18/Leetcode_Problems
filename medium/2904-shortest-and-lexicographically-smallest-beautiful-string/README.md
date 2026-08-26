@@ -64,9 +64,9 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.8 MB  
-**Submitted:** 2026-08-26T03:52:27.975Z  
+**Runtime:** 2 ms (beats 40.94%)  
+**Memory:** 43.9 MB (beats 87.25%)  
+**Submitted:** 2026-08-26T03:52:33.565Z  
 
 ```java
 class Solution {
@@ -89,11 +89,15 @@ class Solution {
                 r++;
             }
 
-            if (count == k && (r - l) < min) 
+            if (count == k)
             {
-                min = r - l;
-                x = l;
-                y = r - 1;
+                int len = r - l;
+                if (len<min || (len==min && s.substring(l, r).compareTo(s.substring(x,y+1))<0))
+                {
+                    min = len;
+                    x = l;
+                    y = r - 1;
+                }
             }
         }
 
