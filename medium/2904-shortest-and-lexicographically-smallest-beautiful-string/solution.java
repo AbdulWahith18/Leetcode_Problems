@@ -18,11 +18,15 @@ class Solution {
                 r++;
             }
 
-            if (count == k && (r - l) < min) 
+            if (count == k)
             {
-                min = r - l;
-                x = l;
-                y = r - 1;
+                int len = r - l;
+                if (len<min || (len==min && s.substring(l, r).compareTo(s.substring(x,y+1))<0))
+                {
+                    min = len;
+                    x = l;
+                    y = r - 1;
+                }
             }
         }
 
