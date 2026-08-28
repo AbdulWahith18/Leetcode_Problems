@@ -77,113 +77,98 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 43 MB  
-**Submitted:** 2026-08-28T13:16:58.144Z  
+**Memory:** 42.6 MB  
+**Submitted:** 2026-08-28T13:17:41.314Z  
 
 ```java
 class Solution {
     public String lexPalindromicPermutation(String s, String target) {
 
         int[] cnt = new int[26];
-
         for (char c : s.toCharArray())
             cnt[c - 'a']++;
 
-        // Check whether palindrome is possible
         int odd = 0;
         char mid = 0;
 
         for (int i = 0; i < 26; i++) {
-            if (cnt[i] % 2 != 0) {
+            if (cnt[i] % 2 == 1) {
                 odd++;
-                mid = (char) ('a' + i);
+                mid = (char)('a' + i);
             }
         }
 
-        if (odd > 1)
-            return "";
+        if (odd > 1) return "";
+
+        int n = s.length(), m = n / 2;
 
         // Build smallest left half
-        int m = s.length() / 2;
         char[] half = new char[m];
-
         int k = 0;
 
         for (int i = 0; i < 26; i++) {
-            for (int j = 0; j < cnt[i] / 2; j++) {
-                half[k++] = (char) ('a' + i);
-            }
+            for (int j = 0; j < cnt[i] / 2; j++)
+                half[k++] = (char)('a' + i);
         }
 
-        // Smallest palindrome
         String ans = make(half, mid);
 
         if (ans.compareTo(target) > 0)
             return ans;
 
-        // Find next palindrome
-        while (nextPermutation(half)) {
+        // Find next possible half
+        for (int pos = m - 1; pos >= 0; pos--) {
 
-            ans = make(half, mid);
+            int[] c = cnt.clone();
 
-            if (ans.compareTo(target) > 0)
-                return ans;
+            // Use characters before pos as they are
+            for (int i = 0; i < pos; i++)
+                c[half[i] - 'a'] -= 2;
+
+            // Try a bigger character at pos
+            for (int x = half[pos] - 'a' + 1; x < 26; x++) {
+
+                if (c[x] >= 2) {
+
+                    c[x] -= 2;
+
+                    char[] h = new char[m];
+
+                    for (int i = 0; i < pos; i++)
+                        h[i] = half[i];
+
+                    h[pos] = (char)('a' + x);
+
+                    int p = pos + 1;
+
+                    for (int y = 0; y < 26; y++) {
+                        while (c[y] >= 2) {
+                            h[p++] = (char)('a' + y);
+                            c[y] -= 2;
+                        }
+                    }
+
+                    ans = make(h, mid);
+
+                    if (ans.compareTo(target) > 0)
+                        return ans;
+                }
+
+                c = cnt.clone();
+
+                for (int i = 0; i < pos; i++)
+                    c[half[i] - 'a'] -= 2;
+            }
         }
 
         return "";
     }
 
-    private String make(char[] half, char mid) {
-
-        StringBuilder ans = new StringBuilder();
-
-        ans.append(half);
-
-        if (mid != 0)
-            ans.append(mid);
-
-        for (int i = half.length - 1; i >= 0; i--)
-            ans.append(half[i]);
-
-        return ans.toString();
-    }
-
-    private boolean nextPermutation(char[] a) {
-
-        int i = a.length - 2;
-
-        // Find first decreasing position
-        while (i >= 0 && a[i] >= a[i + 1])
-            i--;
-
-        if (i < 0)
-            return false;
-
-        // Find smallest character greater than a[i]
-        int j = a.length - 1;
-
-        while (a[j] <= a[i])
-            j--;
-
-        // Swap
-        char temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-
-        // Reverse suffix
-        int l = i + 1;
-        int r = a.length - 1;
-
-        while (l < r) {
-            temp = a[l];
-            a[l] = a[r];
-            a[r] = temp;
-
-            l++;
-            r--;
-        }
-
-        return true;
+    private String make(char[] h, char mid) {
+        StringBuilder s = new StringBuilder(new String(h));
+        if (mid != 0) s.append(mid);
+        s.append(new StringBuilder(new String(h)).reverse());
+        return s.toString();
     }
 }
 ```
