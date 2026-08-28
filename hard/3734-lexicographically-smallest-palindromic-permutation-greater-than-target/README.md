@@ -76,9 +76,9 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.6 MB  
-**Submitted:** 2026-08-28T02:19:22.266Z  
+**Runtime:** 1 ms  
+**Memory:** 42.7 MB  
+**Submitted:** 2026-08-28T02:20:06.057Z  
 
 ```java
             }
@@ -88,16 +88,6 @@ Constraints:
             leftHalf.append(oddChar);
             leftHalf.append(leftHalf.reverse());
         }
-        else
-            leftHalf.append(leftHalf.reverse());
-
-        String rev=leftHalf.toString();
-        int com=rev.compareTo(target);
-        if(com>0)
-            return rev;
-        return "";
-            
-    }
 
 ```
 
