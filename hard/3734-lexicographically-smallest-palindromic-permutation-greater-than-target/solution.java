@@ -5,3 +5,4 @@
             leftHalf.append(oddChar);
             leftHalf.append(leftHalf.reverse());
         }
+        else
