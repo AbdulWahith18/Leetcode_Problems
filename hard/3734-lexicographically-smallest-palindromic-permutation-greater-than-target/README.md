@@ -77,18 +77,24 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 1 ms  
-**Memory:** 42.4 MB  
-**Submitted:** 2026-08-28T02:20:46.210Z  
+**Memory:** 42.7 MB  
+**Submitted:** 2026-08-28T13:00:42.928Z  
 
 ```java
-            }
-        }
-        if(oddCount==1)
-        {
-            leftHalf.append(oddChar);
-            leftHalf.append(leftHalf.reverse());
-        }
-        else
+            if (counts[i] % 2 != 0) { 
+        for (int i = 0; i < 26; i++) { 
+
+        char oddChar = 0; 
+        int oddCount = 0; 
+
+        } 
+            counts[c - 'a']++; 
+        for (char c : s.toCharArray()) { 
+
+        int[] counts = new int[26]; 
+    public String lexPalindromicPermutation(String s, String target) { 
+
+class Solution { 
 
 ```
 
