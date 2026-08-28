@@ -76,99 +76,109 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.5 MB  
-**Submitted:** 2026-08-28T13:19:10.226Z  
+**Runtime:** 133 ms (beats 19.05%)  
+**Memory:** 47 MB (beats 57.14%)  
+**Submitted:** 2026-08-28T13:21:00.889Z  
 
 ```java
 class Solution {
     public String lexPalindromicPermutation(String s, String target) {
 
-        int[] cnt = new int[26];
-        for (char c : s.toCharArray())
-            cnt[c - 'a']++;
+        if (s.length() == 1)
+            return s.compareTo(target) > 0 ? s : "";
 
+        int n = s.length();
+        int[] cnt = new int[26];
+
+        for (char ch : s.toCharArray())
+            cnt[ch - 'a']++;
+
+        // Check if palindrome is possible
         int odd = 0;
         char mid = 0;
 
         for (int i = 0; i < 26; i++) {
-            if (cnt[i] % 2 == 1) {
+            if (cnt[i] % 2 != 0) {
                 odd++;
-                mid = (char)('a' + i);
+                mid = (char) ('a' + i);
             }
         }
 
-        if (odd > 1) return "";
+        if (odd > 1)
+            return "";
 
-        int n = s.length(), m = n / 2;
+        // Characters available for left half
+        int[] halfCnt = new int[26];
 
-        // Build smallest left half
-        char[] half = new char[m];
-        int k = 0;
+        for (int i = 0; i < 26; i++)
+            halfCnt[i] = cnt[i] / 2;
 
-        for (int i = 0; i < 26; i++) {
-            for (int j = 0; j < cnt[i] / 2; j++)
-                half[k++] = (char)('a' + i);
-        }
+        int m = n / 2;
 
-        String ans = make(half, mid);
+        StringBuilder left = new StringBuilder();
 
-        if (ans.compareTo(target) > 0)
-            return ans;
+        // Build left half greedily
+        for (int pos = 0; pos < m; pos++) {
 
-        // Find next possible half
-        for (int pos = m - 1; pos >= 0; pos--) {
+            boolean found = false;
 
-            int[] c = cnt.clone();
+            // Try smallest character first
+            for (int c = 0; c < 26; c++) {
 
-            // Use characters before pos as they are
-            for (int i = 0; i < pos; i++)
-                c[half[i] - 'a'] -= 2;
+                if (halfCnt[c] == 0)
+                    continue;
 
-            // Try a bigger character at pos
-            for (int x = half[pos] - 'a' + 1; x < 26; x++) {
+                // Take this character
+                halfCnt[c]--;
+                left.append((char) ('a' + c));
 
-                if (c[x] >= 2) {
+                /*
+                 * Put all remaining characters in descending order.
+                 * This gives the LARGEST possible palindrome
+                 * having the current prefix.
+                 */
+                StringBuilder temp = new StringBuilder(left);
 
-                    c[x] -= 2;
-
-                    char[] h = new char[m];
-
-                    for (int i = 0; i < pos; i++)
-                        h[i] = half[i];
-
-                    h[pos] = (char)('a' + x);
-
-                    int p = pos + 1;
-
-                    for (int y = 0; y < 26; y++) {
-                        while (c[y] >= 2) {
-                            h[p++] = (char)('a' + y);
-                            c[y] -= 2;
-                        }
+                for (int x = 25; x >= 0; x--) {
+                    for (int k = 0; k < halfCnt[x]; k++) {
+                        temp.append((char) ('a' + x));
                     }
-
-                    ans = make(h, mid);
-
-                    if (ans.compareTo(target) > 0)
-                        return ans;
                 }
 
-                c = cnt.clone();
+                String candidate = makePalindrome(temp, mid);
 
-                for (int i = 0; i < pos; i++)
-                    c[half[i] - 'a'] -= 2;
+                if (candidate.compareTo(target) > 0) {
+                    // This character is valid.
+                    found = true;
+                    break;
+                }
+
+                // Undo choice
+                left.deleteCharAt(left.length() - 1);
+                halfCnt[c]++;
             }
+
+            // No character can make the answer > target
+            if (!found)
+                return "";
         }
 
-        return "";
+        return makePalindrome(left, mid);
     }
 
-    private String make(char[] h, char mid) {
-        StringBuilder s = new StringBuilder(new String(h));
-        if (mid != 0) s.append(mid);
-        s.append(new StringBuilder(new String(h)).reverse());
-        return s.toString();
+    private String makePalindrome(StringBuilder left, char mid) {
+
+        StringBuilder ans = new StringBuilder();
+
+        ans.append(left);
+
+        if (mid != 0)
+            ans.append(mid);
+
+        for (int i = left.length() - 1; i >= 0; i--)
+            ans.append(left.charAt(i));
+
+        return ans.toString();
     }
 }
 ```
