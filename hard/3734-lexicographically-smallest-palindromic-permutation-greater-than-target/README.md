@@ -77,8 +77,8 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 1 ms  
-**Memory:** 42.7 MB  
-**Submitted:** 2026-08-28T02:20:06.057Z  
+**Memory:** 42.4 MB  
+**Submitted:** 2026-08-28T02:20:46.210Z  
 
 ```java
             }
@@ -88,6 +88,7 @@ Constraints:
             leftHalf.append(oddChar);
             leftHalf.append(leftHalf.reverse());
         }
+        else
 
 ```
 
