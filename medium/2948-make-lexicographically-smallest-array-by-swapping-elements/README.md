@@ -53,32 +53,91 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 43 MB  
-**Submitted:** 2026-08-29T04:10:24.871Z  
+**Runtime:** 17 ms  
+**Memory:** 64.1 MB  
+**Submitted:** 2026-08-29T04:20:40.030Z  
 
 ```java
 class Solution {
     public int[] lexicographicallySmallestArray(int[] nums, int limit) {
-        int n=nums.length;
-        int i=0,j=1;
-        while(j<n)
-        {
-            if(nums[i]<=nums[j])
-            {
-                i++;
+        // int n=nums.length;
+        // int i=0;
+        // // while(j<n)
+        // // {
+        // //     if(nums[i]<=nums[j])
+        // //     {
+        // //         i++;
+        // //         j++;
+        // //         continue;
+        // //     }
+        // //     if((nums[i]-nums[j])<=limit)
+        // //     {
+        // //         int temp=nums[i];
+        // //         nums[i]=nums[j];
+        // //         nums[j]=temp;
+        // //     }
+        // //     i++;
+        // //     j++;
+        // // }
+        // while(i<n-1)
+        // {
+        //     int j=i+1;
+        //     int last=j;
+        //     while(j<n)
+        //     {
+        //         if(nums[i]<=nums[j]||(nums[i]-nums[j])>limit)
+        //         {
+        //             j++;
+        //             continue;
+        //         }
+        //         if((nums[i]-nums[j])<=limit)
+        //         {
+        //             int temp=nums[i];
+        //             nums[i]=nums[j];
+        //             nums[j]=temp;
+        //             last=j;
+        //             j++;
+        //         }
+        //     }
+        //     i=last;
+        // }
+        // return nums;
+                int n = nums.length;
+
+        int i = 0;
+
+        while (i < n - 1) {
+
+            int j = i + 1;
+            int last = i;
+
+            while (j < n) {
+
+                // If nums[j] can make position i smaller
+                if (nums[j] < nums[i] &&
+                    nums[i] - nums[j] <= limit) {
+
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+
+                    last = j;
+                }
+
                 j++;
+            }
+
+            /*
+             * If we changed nums[i], start checking again
+             * because an even smaller value may now be usable.
+             */
+            if (last != i) {
                 continue;
             }
-            if((nums[i]-nums[j])<=limit)
-            {
-                int temp=nums[i];
-                nums[i]=nums[j];
-                nums[j]=temp;
-            }
+
             i++;
-            j++;
         }
+
         return nums;
     }
 }
