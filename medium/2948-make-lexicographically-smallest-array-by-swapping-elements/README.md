@@ -53,57 +53,89 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 70 ms (beats 94.70%)  
-**Memory:** 133.7 MB (beats 88.64%)  
-**Submitted:** 2026-08-29T04:20:48.533Z  
+**Runtime:** 2 ms  
+**Memory:** 42.9 MB  
+**Submitted:** 2026-08-29T04:20:07.596Z  
 
 ```java
-import java.util.*;
-
 class Solution {
     public int[] lexicographicallySmallestArray(int[] nums, int limit) {
-
-        int n = nums.length;
-
-        // Store value + original index
-        int[][] arr = new int[n][2];
-
-        for (int i = 0; i < n; i++) {
-            arr[i][0] = nums[i];
-            arr[i][1] = i;
-        }
-
-        // Sort by value
-        Arrays.sort(arr, (a, b) -> Integer.compare(a[0], b[0]));
+        // int n=nums.length;
+        // int i=0;
+        // // while(j<n)
+        // // {
+        // //     if(nums[i]<=nums[j])
+        // //     {
+        // //         i++;
+        // //         j++;
+        // //         continue;
+        // //     }
+        // //     if((nums[i]-nums[j])<=limit)
+        // //     {
+        // //         int temp=nums[i];
+        // //         nums[i]=nums[j];
+        // //         nums[j]=temp;
+        // //     }
+        // //     i++;
+        // //     j++;
+        // // }
+        // while(i<n-1)
+        // {
+        //     int j=i+1;
+        //     int last=j;
+        //     while(j<n)
+        //     {
+        //         if(nums[i]<=nums[j]||(nums[i]-nums[j])>limit)
+        //         {
+        //             j++;
+        //             continue;
+        //         }
+        //         if((nums[i]-nums[j])<=limit)
+        //         {
+        //             int temp=nums[i];
+        //             nums[i]=nums[j];
+        //             nums[j]=temp;
+        //             last=j;
+        //             j++;
+        //         }
+        //     }
+        //     i=last;
+        // }
+        // return nums;
+                int n = nums.length;
 
         int i = 0;
 
-        while (i < n) {
+        while (i < n - 1) {
 
             int j = i + 1;
+            int last = i;
 
-            // Find all elements belonging to this group
-            while (j < n &&
-                   arr[j][0] - arr[j - 1][0] <= limit) {
+            while (j < n) {
+
+                // If nums[j] can make position i smaller
+                if (nums[j] < nums[i] &&
+                    nums[i] - nums[j] <= limit) {
+
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+
+                    last = j;
+                }
+
                 j++;
             }
 
-            // Collect original indices
-            int[] pos = new int[j - i];
-
-            for (int k = i; k < j; k++) {
-                pos[k - i] = arr[k][1];
+            /*
+             * If we changed nums[i], start checking again
+             * because an even smaller value may now be usable.
+             */
+            if (last != i) {
+                continue;
             }
 
-            // Smallest original index first
-            Arrays.sort(pos);
-
-            // Put smallest values at smallest positions
-            for (int k = i; k < j; k++) {
-                nums[pos[k - i]] = arr[k][0];
-            }
-
-            i = j;
+            i++;
         }
 
         return nums;
