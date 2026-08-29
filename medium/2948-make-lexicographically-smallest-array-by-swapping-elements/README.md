@@ -54,22 +54,34 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 42.6 MB  
-**Submitted:** 2026-08-29T03:50:15.296Z  
+**Memory:** 43.1 MB  
+**Submitted:** 2026-08-29T04:01:13.489Z  
 
 ```java
-class Solution {
-    public int[] lexicographicallySmallestArray(int[] nums, int limit) {
-        int n=nums.length;
-        int i=0,j=1;
-        while(j<n)
-        {
-            if(nums[i]<=nums[j])
-            {
-                i++;
-                j++;
-                continue;
-
+class Solution {
+    public int[] lexicographicallySmallestArray(int[] nums, int limit) {
+        int n=nums.length;
+        int i=0,j=1;
+        while(j<n)
+        {
+            if(nums[i]<=nums[j])
+            {
+                i++;
+                j++;
+                continue;
+            }
+            if((nums[i]-nums[j])<=limit)
+            {
+                int temp=nums[i];
+                nums[i]=nums[j];
+                nums[j]=temp;
+            }
+            i++;
+            j++;
+        }
+        return nums;
+    }
+}
 ```
 
 ---
