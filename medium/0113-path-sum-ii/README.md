@@ -41,9 +41,9 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.5 MB  
-**Submitted:** 2026-08-30T15:39:54.699Z  
+**Runtime:** 1 ms (beats 99.99%)  
+**Memory:** 45.3 MB (beats 74.13%)  
+**Submitted:** 2026-08-30T15:40:52.508Z  
 
 ```java
 /**
@@ -62,19 +62,32 @@ Constraints:
  * }
  */
 class Solution {
-    public boolean hasPathSum(TreeNode root, int targetSum) {
+
+    List<List<Integer>> res = new ArrayList<>();
+    List<Integer> l = new ArrayList<>();
+
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
 
         if (root == null)
-            return false;
+            return res;
+
+        l.add(root.val);
 
         if (root.left == null && root.right == null) {
-            return targetSum == root.val;
+
+            if (targetSum == root.val) {
+                res.add(new ArrayList<>(l));
+            }
+
+        } else {
+
+            pathSum(root.left, targetSum - root.val);
+            pathSum(root.right, targetSum - root.val);
         }
 
-        targetSum -= root.val;
+        l.remove(l.size() - 1);
 
-        return hasPathSum(root.left, targetSum) ||
-               hasPathSum(root.right, targetSum);
+        return res;
     }
 }
 ```
