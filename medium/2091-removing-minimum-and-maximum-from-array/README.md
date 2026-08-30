@@ -55,24 +55,50 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.6 MB  
-**Submitted:** 2026-08-30T02:28:00.418Z  
+**Runtime:** 2 ms (beats 100.00%)  
+**Memory:** 86.7 MB (beats 60.18%)  
+**Submitted:** 2026-08-30T02:28:08.057Z  
 
 ```java
-        // Both from front
-        int front = right + 1;
+class Solution {
+    public int minimumDeletions(int[] nums) {
 
-        // Both from back
-        int back = l - left;
+        int max = nums[0], min = nums[0];
+        int m = 0, n = 0;
 
-        // One from front, one from back
-        int mixed = (left + 1) + (l - right);
+        int l = nums.length;
 
-        return Math.min(front, Math.min(back, mixed));
-    }
+        for (int i = 1; i < l; i++) {
+
+            if (nums[i] > max) {
+                max = nums[i];
+                m = i;
+            }
+
+            if (nums[i] < min) {
+                min = nums[i];
+                n = i;
+            }
+        }
+
+        // m = max index
+        // n = min index
+
+        int left = Math.min(m, n);
+        int right = Math.max(m, n);
+
+        // Both from front
+        int front = right + 1;
+
+        // Both from back
+        int back = l - left;
+
+        // One from front, one from back
+        int mixed = (left + 1) + (l - right);
+
+        return Math.min(front, Math.min(back, mixed));
+    }
 }
-
 ```
 
 ---
