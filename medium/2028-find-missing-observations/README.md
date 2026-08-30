@@ -48,12 +48,10 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 42.8 MB  
-**Submitted:** 2026-08-30T06:17:07.582Z  
+**Memory:** 42.4 MB  
+**Submitted:** 2026-08-30T06:18:02.587Z  
 
 ```java
-        int fill=missSum/n;
-        int k=n,j=0;
 class Solution {
     public int[] missingRolls(int[] rolls, int mean, int n) {
         int arrSum=0;
@@ -63,11 +61,8 @@ class Solution {
         }
         int missSum=mean*(rolls.length+n)-arrSum;
         int res[]=new int[n];
-        while(k>1)
-        {
-            res[j++]=fill;
-            k--;
-            missSum-=fill;
+        int k=n,j=0;
+        int fill=missSum/n;
 
 ```
 
