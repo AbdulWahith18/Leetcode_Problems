@@ -6,6 +6,9 @@ class Solution {
             arrSum+=rolls[i];
         }
         int missSum=mean*(rolls.length+n)-arrSum;
+        if(missSum<=0)
+            return new int[0];
+        System.out.println(missSum);
         int res[]=new int[n];
         int k=n,j=0;
         int fill=missSum/n;
