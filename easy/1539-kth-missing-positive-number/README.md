@@ -41,41 +41,31 @@ Could you solve this problem in less than O(n) complexity?
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.6 MB  
-**Submitted:** 2026-08-30T06:35:17.153Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 44.4 MB (beats 87.84%)  
+**Submitted:** 2026-08-30T06:35:22.954Z  
 
 ```java
 class Solution {
-    public int[] missingRolls(int[] rolls, int mean, int n) {
+    public int findKthPositive(int[] arr, int k) {
 
-        int arrSum = 0;
+        int left = 0;
+        int right = arr.length - 1;
 
-        for (int x : rolls) {
-            arrSum += x;
-        }
+        while (left <= right) {
 
-        int missSum = mean * (rolls.length + n) - arrSum;
+            int mid = left + (right - left) / 2;
 
-        if (missSum < n || missSum > 6 * n)
-            return new int[0];
+            int missing = arr[mid] - mid - 1;
 
-        int[] res = new int[n];
-
-        int fill = missSum / n;
-        int rem = missSum % n;
-
-        for (int i = 0; i < n; i++) {
-
-            res[i] = fill;
-
-            if (rem > 0) {
-                res[i]++;
-                rem--;
+            if (missing < k) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
 
-        return res;
+        return left + k;
     }
 }
 ```
