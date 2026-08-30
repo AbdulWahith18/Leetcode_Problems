@@ -1,11 +1,12 @@
-            if(nums[i]<min)
-            {
-                min=nums[i];
-                n=i;
-            }
-            }
-            {
-                max=nums[i];
-                m=i;
-            if(nums[i]>max)
-        {
+        // Both from front
+        int front = right + 1;
+
+        // Both from back
+        int back = l - left;
+
+        // One from front, one from back
+        int mixed = (left + 1) + (l - right);
+
+        return Math.min(front, Math.min(back, mixed));
+    }
+}
