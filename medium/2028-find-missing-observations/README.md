@@ -48,8 +48,8 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 43 MB  
-**Submitted:** 2026-08-30T06:19:43.668Z  
+**Memory:** 42.6 MB  
+**Submitted:** 2026-08-30T06:25:05.358Z  
 
 ```java
 class Solution {
@@ -60,6 +60,9 @@ class Solution {
             arrSum+=rolls[i];
         }
         int missSum=mean*(rolls.length+n)-arrSum;
+        if(missSum<=0)
+            return new int[0];
+        System.out.println(missSum);
         int res[]=new int[n];
         int k=n,j=0;
         int fill=missSum/n;
