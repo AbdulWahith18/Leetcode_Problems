@@ -48,21 +48,26 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 43.1 MB  
-**Submitted:** 2026-08-30T06:13:00.133Z  
+**Memory:** 42.8 MB  
+**Submitted:** 2026-08-30T06:17:07.582Z  
 
 ```java
-            }
-            else if((missSum-3)>0)
-            {
-                res[j++]=3;
-                missSum-=3;
-            }
-                missSum-=4;
-                res[j++]=4;
-            {
-            else if((missSum-2)>0)
-            {
+        int fill=missSum/n;
+        int k=n,j=0;
+class Solution {
+    public int[] missingRolls(int[] rolls, int mean, int n) {
+        int arrSum=0;
+        for(int i=0;i<rolls.length;i++)
+        {
+            arrSum+=rolls[i];
+        }
+        int missSum=mean*(rolls.length+n)-arrSum;
+        int res[]=new int[n];
+        while(k>1)
+        {
+            res[j++]=fill;
+            k--;
+            missSum-=fill;
 
 ```
 
