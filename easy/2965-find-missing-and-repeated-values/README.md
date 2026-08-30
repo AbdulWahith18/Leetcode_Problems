@@ -36,30 +36,35 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 43.1 MB  
-**Submitted:** 2026-08-30T09:03:41.088Z  
+**Runtime:** 6 ms (beats 27.58%)  
+**Memory:** 47.7 MB (beats 11.35%)  
+**Submitted:** 2026-08-30T09:04:03.467Z  
 
 ```java
-        int rep=0;
-        for(int i=0;i<m;i++)
-        {
-            for(int j=0;j<m;j++)
-        }
-            {
-                if(s.contains(grid[i][j]))
-            }
-                    rep=grid[i][j];
-                s.add(grid[i][j]);
-        int sum=0;
-        for(Integer a:s)
-            sum+=a;
-        int total=(n*(n+1))/2;
-        int n=m*m;
-        int New=total-sum;
-        return new int[]{rep,New};
+class Solution {
+    public int[] findMissingAndRepeatedValues(int[][] grid) {
+        int m=grid.length;
+        Set<Integer> s=new HashSet<>();
+        int rep=0;
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(s.contains(grid[i][j]))
+                    rep=grid[i][j];
+                s.add(grid[i][j]);
+            }
+        }
+        int sum=0;
+        for(Integer a:s)
+            sum+=a;
+        int n=m*m;
+        int total=(n*(n+1))/2;
+        int New=total-sum;
+        return new int[]{rep,New};
 
-
+    }
+}
 ```
 
 ---
