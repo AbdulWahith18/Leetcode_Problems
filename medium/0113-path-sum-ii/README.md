@@ -42,8 +42,8 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 42.9 MB  
-**Submitted:** 2026-08-30T15:38:30.182Z  
+**Memory:** 42.5 MB  
+**Submitted:** 2026-08-30T15:39:54.699Z  
 
 ```java
 /**
