@@ -1,26 +1,32 @@
 class Solution {
     public int[] missingRolls(int[] rolls, int mean, int n) {
-        int arrSum=0;
-        for(int i=0;i<rolls.length;i++)
-        {
-            arrSum+=rolls[i];
+
+        int arrSum = 0;
+
+        for (int x : rolls) {
+            arrSum += x;
         }
-        int missSum=mean*(rolls.length+n)-arrSum;
-        if(missSum<=0)
+
+        int missSum = mean * (rolls.length + n) - arrSum;
+
+        if (missSum < n || missSum > 6 * n)
             return new int[0];
-        System.out.println(missSum);
-        int res[]=new int[n];
-        int k=n,j=0;
-        int fill=missSum/n;
-        while(k>1)
-        {
-            res[j++]=fill;
-            missSum-=fill;
-            k--;
+
+        int[] res = new int[n];
+
+        int fill = missSum / n;
+        int rem = missSum % n;
+
+        for (int i = 0; i < n; i++) {
+
+            res[i] = fill;
+
+            if (rem > 0) {
+                res[i]++;
+                rem--;
+            }
         }
-        res[j]=missSum;
-        if(missSum>6)
-            return new int[0];
+
         return res;
     }
 }
