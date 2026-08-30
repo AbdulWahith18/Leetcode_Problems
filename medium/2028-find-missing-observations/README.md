@@ -48,8 +48,8 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 43 MB  
-**Submitted:** 2026-08-30T06:12:28.144Z  
+**Memory:** 43.1 MB  
+**Submitted:** 2026-08-30T06:13:00.133Z  
 
 ```java
             }
@@ -61,23 +61,8 @@ Constraints:
                 missSum-=4;
                 res[j++]=4;
             {
-            else if((missSum-4)>0)
-            }
-                missSum-=5;
-                res[j++]=5;
             else if((missSum-2)>0)
             {
-                res[j++]=2;
-                missSum-=2;
-            }
-            else
-            {
-                res[j++]=1;
-                missSum-=1;
-            }
-        }
-        return res;
-            k--;
 
 ```
 
