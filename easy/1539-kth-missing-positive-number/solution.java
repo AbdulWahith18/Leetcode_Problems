@@ -1,32 +1,22 @@
 class Solution {
-    public int[] missingRolls(int[] rolls, int mean, int n) {
+    public int findKthPositive(int[] arr, int k) {
 
-        int arrSum = 0;
+        int left = 0;
+        int right = arr.length - 1;
 
-        for (int x : rolls) {
-            arrSum += x;
-        }
+        while (left <= right) {
 
-        int missSum = mean * (rolls.length + n) - arrSum;
+            int mid = left + (right - left) / 2;
 
-        if (missSum < n || missSum > 6 * n)
-            return new int[0];
+            int missing = arr[mid] - mid - 1;
 
-        int[] res = new int[n];
-
-        int fill = missSum / n;
-        int rem = missSum % n;
-
-        for (int i = 0; i < n; i++) {
-
-            res[i] = fill;
-
-            if (rem > 0) {
-                res[i]++;
-                rem--;
+            if (missing < k) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
 
-        return res;
+        return left + k;
     }
 }
