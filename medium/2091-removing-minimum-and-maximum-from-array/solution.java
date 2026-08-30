@@ -1,0 +1,11 @@
+            if(nums[i]<min)
+            {
+                min=nums[i];
+                n=i;
+            }
+            }
+            {
+                max=nums[i];
+                m=i;
+            if(nums[i]>max)
+        {
