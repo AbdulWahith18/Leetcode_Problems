@@ -57,8 +57,8 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 42.7 MB  
-**Submitted:** 2026-08-31T01:22:07.636Z  
+**Memory:** 43.2 MB  
+**Submitted:** 2026-08-31T01:22:55.437Z  
 
 ```java
         int i=1;
@@ -73,6 +73,7 @@ Constraints:
                 l.add(i);
             else if(temp.next!=null&&temp.val<temp.next.val&&temp.val<prev.val)
                 l.add(i);
+            temp=temp.next;
             i++;
         }
         if(l.size()==1)
@@ -81,7 +82,9 @@ Constraints:
         return new int[]{min,max};
         
     }
-            temp=temp.next;
+        for(Integer j:l)
+            System.out.println(j);
+}
 
 ```
 
