@@ -10,6 +10,7 @@
                 l.add(i);
             else if(temp.next!=null&&temp.val<temp.next.val&&temp.val<prev.val)
                 l.add(i);
+            temp=temp.next;
             i++;
         }
         if(l.size()==1)
@@ -18,4 +19,6 @@
         return new int[]{min,max};
         
     }
-            temp=temp.next;
+        for(Integer j:l)
+            System.out.println(j);
+}
