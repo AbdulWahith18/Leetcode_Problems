@@ -57,18 +57,11 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 42.6 MB  
-**Submitted:** 2026-08-31T01:26:54.839Z  
+**Memory:** 42.9 MB  
+**Submitted:** 2026-08-31T01:28:05.712Z  
 
 ```java
-        List<Integer> l=new ArrayList<>();
-    public int[] nodesBetweenCriticalPoints(ListNode head) {
         l.add(0);
-        int i=1;
-        ListNode prev=head;
-        ListNode temp=head.next;
-        while(temp!=null)
-        {
 
 ```
 
