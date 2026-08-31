@@ -57,8 +57,8 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 42.7 MB  
-**Submitted:** 2026-08-31T01:23:23.559Z  
+**Memory:** 42.8 MB  
+**Submitted:** 2026-08-31T01:23:46.407Z  
 
 ```java
         List<Integer> l=new ArrayList<>();
@@ -73,8 +73,19 @@ Constraints:
                 l.add(i);
             else if(temp.next!=null&&temp.val<temp.next.val&&temp.val<prev.val)
                 l.add(i);
-            temp=temp.next;
             prev=temp;
+            temp=temp.next;
+            i++;
+        }
+        for(Integer j:l)
+            System.out.println(j);
+        if(l.size()==1)
+            return new int[]{-1,-1};
+        int min=l.get(2)-l.get(1),max=l.get(l.size()-1)-l.get(0);
+        return new int[]{min,max};
+        
+    }
+}
 
 ```
 
