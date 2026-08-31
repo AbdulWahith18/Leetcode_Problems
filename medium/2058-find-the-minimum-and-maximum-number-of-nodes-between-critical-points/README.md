@@ -57,11 +57,17 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 42.9 MB  
-**Submitted:** 2026-08-31T01:28:05.712Z  
+**Memory:** 42.8 MB  
+**Submitted:** 2026-08-31T01:29:18.513Z  
 
 ```java
-        l.add(0);
+        int i=1;
+        ListNode prev=head;
+        ListNode temp=head.next;
+        while(temp!=null)
+        {
+            if(temp.next!=null&&temp.val>temp.next.val&&temp.val>prev.val)
+                l.add(i);
 
 ```
 
