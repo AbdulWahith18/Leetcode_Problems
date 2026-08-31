@@ -57,8 +57,8 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 43 MB  
-**Submitted:** 2026-08-31T01:23:57.617Z  
+**Memory:** 42.6 MB  
+**Submitted:** 2026-08-31T01:26:54.839Z  
 
 ```java
         List<Integer> l=new ArrayList<>();
@@ -69,8 +69,6 @@ Constraints:
         ListNode temp=head.next;
         while(temp!=null)
         {
-            if(temp.next!=null&&temp.val>temp.next.val&&temp.val>prev.val)
-                l.add(i);
 
 ```
 
