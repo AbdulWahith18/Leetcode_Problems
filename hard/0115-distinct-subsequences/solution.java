@@ -1,23 +1,23 @@
-class Solution {
-    public int numDistinct(String s, String t) {
+class Solution {
+    public int numDistinct(String s, String t) {
 
-        int m = t.length();
+        int m = t.length();
 
-        int[] dp = new int[m + 1];
+        int[] dp = new int[m + 1];
 
-        // Empty t can always be formed in exactly 1 way
-        dp[0] = 1;
+        // Empty t can always be formed in exactly 1 way
+        dp[0] = 1;
 
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
 
-            for (int j = m; j >= 1; j--) {
+            for (int j = m; j >= 1; j--) {
 
-                if (s.charAt(i) == t.charAt(j - 1)) {
-                    dp[j] += dp[j - 1];
-                }
-            }
-        }
+                if (s.charAt(i) == t.charAt(j - 1)) {
+                    dp[j] += dp[j - 1];
+                }
+            }
+        }
 
-        return dp[m];
-    }
+        return dp[m];
+    }
 }
