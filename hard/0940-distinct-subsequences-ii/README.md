@@ -38,38 +38,38 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 5 ms (beats 54.61%)  
-**Memory:** 43.2 MB (beats 70.21%)  
-**Submitted:** 2026-09-07T01:45:37.652Z  
+**Runtime:** 0 ms  
+**Memory:** 42.6 MB  
+**Submitted:** 2026-09-07T01:36:53.347Z  
 
 ```java
-class Solution {
-    public int distinctSubseqII(String s) {
 
-        int MOD = 1000000007;
-        int n = s.length();
+        int MOD = 1000000007;
+        int n = s.length();
 
-        long[] dp = new long[n + 1];
-        int[] last = new int[26];
+        long[] dp = new long[n + 1];
+        int[] last = new int[26];
 
-        dp[0] = 1;
+        dp[0] = 1;
 
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {
 
-            int c = s.charAt(i - 1) - 'a';
+            int c = s.charAt(i - 1) - 'a';
 
-            dp[i] = (2 * dp[i - 1]) % MOD;
+            dp[i] = (2 * dp[i - 1]) % MOD;
 
-            if (last[c] != 0) {
-                dp[i] = (dp[i] - dp[last[c] - 1] + MOD) % MOD;
-            }
+            if (last[c] != 0) {
+                dp[i] = (dp[i] - dp[last[c] - 1] + MOD) % MOD;
+            }
 
-            last[c] = i;
-        }
+            last[c] = i;
+        }
 
-        return (int)((dp[n] - 1 + MOD) % MOD);
-    }
-}
+        return (int)((dp[n] - 1 + MOD) % MOD);
+    }
+    public int distinctSubseqII(String s) {
+class Solution {
+
 ```
 
 ---
