@@ -50,20 +50,16 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 42.3 MB  
-**Submitted:** 2026-09-08T01:09:55.153Z  
+**Memory:** 42.2 MB  
+**Submitted:** 2026-09-08T01:12:22.336Z  
 
 ```java
 class Solution {
     public int countCommas(int n) {
-        int count=0;
-        while(n>0)
-        {
-            count++;
-            n/=10;
-        }
+        if(n<1000)
+            return 0;
+        return (n-999);
     }
-        return count/3;
 }
 
 ```
