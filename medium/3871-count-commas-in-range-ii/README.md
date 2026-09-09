@@ -49,9 +49,9 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.1 MB  
-**Submitted:** 2026-09-09T01:39:02.994Z  
+**Runtime:** 1 ms (beats 99.36%)  
+**Memory:** 42.2 MB (beats 97.44%)  
+**Submitted:** 2026-09-09T01:39:09.336Z  
 
 ```java
 class Solution {
@@ -78,6 +78,8 @@ class Solution {
             ans += 4 * (n - 999999999999L);
         }
 
+        if(n==1000000000000000L)
+            return ans+1;
         return ans;
     }
 }
