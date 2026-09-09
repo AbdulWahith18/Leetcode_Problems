@@ -22,8 +22,6 @@ class Solution {
             ans += 4 * (n - 999999999999L);
         }
 
-        if(n==1000000000000000L)
-            return ans+1;
         return ans;
     }
 }
