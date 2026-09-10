@@ -73,16 +73,19 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 7 ms  
-**Memory:** 52.3 MB  
-**Submitted:** 2026-09-10T13:10:09.799Z  
+**Runtime:** 10 ms  
+**Memory:** 52.2 MB  
+**Submitted:** 2026-09-10T13:13:09.121Z  
 
 ```java
 class Solution {
     public int minMirrorPairDistance(int[] nums) {
         HashMap<Integer,Integer> s=new HashMap<>();
         for(int i=0;i<nums.length;i++)
-            s.put(nums[i],i);
+        {
+            if(!s.containsKey(nums[i]))
+                s.put(nums[i],i);
+        }
         int res=Integer.MAX_VALUE;
         for(int i=0;i<nums.length;i++)
         {
