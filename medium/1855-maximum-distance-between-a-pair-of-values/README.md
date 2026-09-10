@@ -48,16 +48,16 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.4 MB  
-**Submitted:** 2026-09-10T12:38:34.836Z  
+**Runtime:** 6 ms  
+**Memory:** 53.4 MB  
+**Submitted:** 2026-09-10T12:49:08.069Z  
 
 ```java
 class Solution {
     public int maxDistance(int[] nums1, int[] nums2) {
         int j=nums2.length-1;
         int i=nums1.length;
-        int max=Integer.MIN_VALUE;
+        int max=0;
         for(int x=j;x>=0;x--)
         {
             for(int y=0;y<i&&y<=j;y++)
