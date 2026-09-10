@@ -1,28 +1,23 @@
 class Solution {
-    public int maxDistance(int[] nums1, int[] nums2) {
+    public int minMirrorPairDistance(int[] nums) {
+        HashMap<Integer,Integer> s=new HashMap<>();
+        for(int i=0;i<nums.length;i++)
+            s.put(nums[i],i);
+        int res=Integer.MAX_VALUE;
+        for(int i=0;i<nums.length;i++)
+        {
+            int reverse = 0;
 
-        int max = 0;
-
-        for (int x = 0; x < nums2.length; x++) {
-
-            int left = 0;
-            int right = Math.min(x, nums1.length - 1);
-
-            while (left <= right) {
-
-                int mid = left + (right - left) / 2;
-
-                if (nums1[mid] <= nums2[x]) {
-                    // Valid, but try to find an even smaller y
-                    max = Math.max(max, x - mid);
-                    right = mid - 1;
-                } else {
-                    // nums1[mid] is too large
-                    left = mid + 1;
-                }
+            while (nums[i] != 0) 
+            {
+            reverse = reverse * 10 + (nums[i] % 10);
+            nums[i] = nums[i] / 10;
             }
+            if(s.containsKey(reverse)&&i<s.get(reverse))
+                res=Math.min(res,Math.abs(i-s.get(reverse)));
         }
-
-        return max;
+        if(res==Integer.MAX_VALUE)
+            return -1;
+        return res;
     }
 }
