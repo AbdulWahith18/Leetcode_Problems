@@ -49,21 +49,24 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 42.3 MB  
-**Submitted:** 2026-09-10T12:36:52.733Z  
+**Memory:** 42.4 MB  
+**Submitted:** 2026-09-10T12:38:34.836Z  
 
 ```java
 class Solution {
-    public int mirrorDistance(int num) {
-        int reverse = 0,x=num;
-
-        while (num != 0)
+    public int maxDistance(int[] nums1, int[] nums2) {
+        int j=nums2.length-1;
+        int i=nums1.length;
+        int max=Integer.MIN_VALUE;
+        for(int x=j;x>=0;x--)
         {
-            int digit = num % 10;
-            reverse = reverse * 10 + digit;
-            num = num / 10;
+            for(int y=0;y<i&&y<=j;y++)
+            {
+                if(nums1[y]<=nums2[x])
+                    max=Math.max(max,(x-y));
+            }
         }
-        return Math.abs(x-reverse);
+        return max;
     }
 }
 ```
