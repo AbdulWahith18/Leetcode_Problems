@@ -43,35 +43,51 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.4 MB  
-**Submitted:** 2026-09-10T12:19:57.090Z  
+**Runtime:** 1 ms (beats 56.32%)  
+**Memory:** 45.7 MB (beats 24.23%)  
+**Submitted:** 2026-09-10T12:20:13.875Z  
 
 ```java
-    int ans = 0;
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
 
-    public int averageOfSubtree(TreeNode root) {
-        dfs(root);
-        return ans;
-    }
+    int ans = 0;
 
-    int[] dfs(TreeNode node) {
-        if (node == null) return new int[]{0, 0};
+    public int averageOfSubtree(TreeNode root) {
+        dfs(root);
+        return ans;
+    }
 
-        int[] left = dfs(node.left);
-        int[] right = dfs(node.right);
+    int[] dfs(TreeNode node) {
+        if (node == null) return new int[]{0, 0};
 
-        int sum = node.val + left[0] + right[0];
-        int count = 1 + left[1] + right[1];
+        int[] left = dfs(node.left);
+        int[] right = dfs(node.right);
 
-        if (node.val == sum / count) {
-            ans++;
-        }
+        int sum = node.val + left[0] + right[0];
+        int count = 1 + left[1] + right[1];
 
-        return new int[]{sum, count};
-    }
+        if (node.val == sum / count) {
+            ans++;
+        }
+
+        return new int[]{sum, count};
+    }
 }
-
 ```
 
 ---
