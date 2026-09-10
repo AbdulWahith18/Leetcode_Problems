@@ -67,25 +67,24 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.3 MB  
-**Submitted:** 2026-09-10T12:26:53.532Z  
+**Runtime:** 1 ms (beats 99.85%)  
+**Memory:** 42.8 MB (beats 23.01%)  
+**Submitted:** 2026-09-10T12:27:00.895Z  
 
 ```java
-class Solution {
-    public int mirrorDistance(int num) {
-        int reverse = 0,x=num;
+class Solution {
+    public int mirrorDistance(int num) {
+        int reverse = 0,x=num;
 
-        while (num != 0)
-            int digit = num % 10;
-            reverse = reverse * 10 + digit;
-            num = num / 10;
-        }
-    }
-        {
-        return Math.abs(x-reverse);
+        while (num != 0)
+        {
+            int digit = num % 10;
+            reverse = reverse * 10 + digit;
+            num = num / 10;
+        }
+        return Math.abs(x-reverse);
+    }
 }
-
 ```
 
 ---
