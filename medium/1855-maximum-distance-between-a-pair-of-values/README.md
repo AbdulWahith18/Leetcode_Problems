@@ -48,24 +48,36 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 6 ms  
-**Memory:** 53.4 MB  
-**Submitted:** 2026-09-10T12:49:08.069Z  
+**Runtime:** 25 ms (beats 5.26%)  
+**Memory:** 86.2 MB (beats 45.15%)  
+**Submitted:** 2026-09-10T12:49:14.837Z  
 
 ```java
 class Solution {
     public int maxDistance(int[] nums1, int[] nums2) {
-        int j=nums2.length-1;
-        int i=nums1.length;
-        int max=0;
-        for(int x=j;x>=0;x--)
-        {
-            for(int y=0;y<i&&y<=j;y++)
-            {
-                if(nums1[y]<=nums2[x])
-                    max=Math.max(max,(x-y));
+
+        int max = 0;
+
+        for (int x = 0; x < nums2.length; x++) {
+
+            int left = 0;
+            int right = Math.min(x, nums1.length - 1);
+
+            while (left <= right) {
+
+                int mid = left + (right - left) / 2;
+
+                if (nums1[mid] <= nums2[x]) {
+                    // Valid, but try to find an even smaller y
+                    max = Math.max(max, x - mid);
+                    right = mid - 1;
+                } else {
+                    // nums1[mid] is too large
+                    left = mid + 1;
+                }
             }
         }
+
         return max;
     }
 }
