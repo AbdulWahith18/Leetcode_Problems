@@ -24,6 +24,9 @@ class Solution {
         }
         if(count==digits.length)
             return disCount;
-        return disCount*factorial(digits.length-1);
+        int res=disCount*factorial(digits.length-1);
+        if(s.contains(0))
+            return res-1;
+        return res;
     }
 }
