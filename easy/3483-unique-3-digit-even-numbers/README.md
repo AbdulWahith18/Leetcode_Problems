@@ -60,8 +60,8 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 43 MB  
-**Submitted:** 2026-09-11T01:58:12.394Z  
+**Memory:** 42.6 MB  
+**Submitted:** 2026-09-11T02:19:33.960Z  
 
 ```java
 class Solution {
@@ -90,7 +90,10 @@ class Solution {
         }
         if(count==digits.length)
             return disCount;
-        return disCount*factorial(digits.length-1);
+        int res=disCount*factorial(digits.length-1);
+        if(s.contains(0))
+            return res-1;
+        return res;
     }
 }
 ```
