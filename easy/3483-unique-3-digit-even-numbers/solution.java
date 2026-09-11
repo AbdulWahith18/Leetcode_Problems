@@ -1,32 +1,36 @@
 class Solution {
-    public int factorial(int n)
-    {
-        int res=1;
-        for(int i=2;i<=n;i++)
-        {
-            res*=i;
+    public int totalNumbers(int[] digits) {
+
+        int[] freq = new int[10];
+
+        for (int d : digits) {
+            freq[d]++;
         }
-        return res;
-    }
-    public int totalNumbers(int[] digits)
-    {
-        int disCount=0,count=0;
-        Set<Integer> s=new HashSet<>();
-        for(int i:digits)
-        {
-            if(i%2==0)
-            {
-                count++;
-                if(!s.contains(i))
-                    disCount++;
-                s.add(i);
-            }     
+
+        int ans = 0;
+
+        for (int num = 100; num <= 999; num++) {
+
+            if (num % 2 != 0)
+                continue;
+
+            int a = num / 100;
+            int b = (num / 10) % 10;
+            int c = num % 10;
+
+            freq[a]--;
+            freq[b]--;
+            freq[c]--;
+
+            if (freq[a] >= 0 && freq[b] >= 0 && freq[c] >= 0) {
+                ans++;
+            }
+
+            freq[a]++;
+            freq[b]++;
+            freq[c]++;
         }
-        if(count==digits.length)
-            return disCount;
-        int res=disCount*factorial(digits.length-1);
-        if(s.contains(0))
-            return res-1;
-        return res;
+
+        return ans;
     }
 }
