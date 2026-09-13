@@ -60,25 +60,24 @@ Constraints:
 
 **Language:** Java  
 **Runtime:** 0 ms  
-**Memory:** 42.7 MB  
-**Submitted:** 2026-09-13T11:46:00.903Z  
+**Memory:** 42.6 MB  
+**Submitted:** 2026-09-13T11:48:15.392Z  
 
 ```java
-class Solution {
-    public int minimumPushes(String word) {
-        int res=word.length();
-        if(res<=8)
-            return res;
-        else if(res<=16)
-            return (8+(res%8)*2);
-        
-    }
-        else if(res<=24)
-            return (24+(res%8)*3);
-        else
-            return (48+(res%8)*4);
+class Solution {
+    public int minimumPushes(String word) {
+        int res=word.length();
+        if(res<=8)
+            return res;
+        else if(res<=16)
+            return (8+(res%8)*2);
+        else if(res<=24)
+            return (24+(res%8)*3);
+        else
+            return (48+(res%8)*4);
+        
+    }
 }
-
 ```
 
 ---
