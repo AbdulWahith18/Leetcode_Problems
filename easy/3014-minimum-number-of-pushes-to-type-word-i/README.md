@@ -59,9 +59,9 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.6 MB  
-**Submitted:** 2026-09-13T11:48:15.392Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 43 MB (beats 73.63%)  
+**Submitted:** 2026-09-13T11:48:21.364Z  
 
 ```java
 class Solution {
@@ -69,10 +69,14 @@ class Solution {
         int res=word.length();
         if(res<=8)
             return res;
-        else if(res<=16)
+        else if(res<16)
             return (8+(res%8)*2);
-        else if(res<=24)
+        else if(res==16)
+            return 24;
+        else if(res<24)
             return (24+(res%8)*3);
+        else if(res==24)
+            return 48;
         else
             return (48+(res%8)*4);
         
