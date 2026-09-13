@@ -70,27 +70,26 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 1 ms  
-**Memory:** 43.1 MB  
-**Submitted:** 2026-09-13T12:11:43.432Z  
+**Runtime:** 10 ms (beats 62.83%)  
+**Memory:** 48.3 MB (beats 6.49%)  
+**Submitted:** 2026-09-13T12:11:47.358Z  
 
 ```java
 class Solution {
     public int minimumPushes(String word) {
-        int res=word.length();
-        if(res<=8)
-            return res;
-        else if(res<16)
-            return (8+(res%8)*2);
-        else if(res==16)
-            return 24;
-        else if(res<24)
-            return (24+(res%8)*3);
-        else if(res==24)
-            return 48;
-        else
-            return (48+(res%8)*4);
-        
+        int[] freq = new int[26];
+
+        for (char c : word.toCharArray())
+            freq[c - 'a']++;
+
+        Arrays.sort(freq);
+
+        int ans = 0;
+
+        for (int i = 25; i >= 0; i--)
+            ans += freq[i] * ((25 - i) / 8 + 1);
+
+        return ans;
     }
 }
 ```
