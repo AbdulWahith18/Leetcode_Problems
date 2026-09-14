@@ -33,26 +33,25 @@ Constraints:
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.6 MB  
-**Submitted:** 2026-09-14T03:50:35.073Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 42.9 MB (beats 5.43%)  
+**Submitted:** 2026-09-14T03:50:39.826Z  
 
 ```java
-class Solution {
-    public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
+class Solution {
+    public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
 
-        if (rec1[2] <= rec2[0] ||   // rec1 left of rec2
-            rec1[0] >= rec2[2] ||   // rec1 right of rec2
-            rec1[3] <= rec2[1] ||   // rec1 below rec2
-            rec1[1] >= rec2[3])     // rec1 above rec2
-        {
-            return false;
-        }
+        if (rec1[2] <= rec2[0] ||   // rec1 left of rec2
+            rec1[0] >= rec2[2] ||   // rec1 right of rec2
+            rec1[3] <= rec2[1] ||   // rec1 below rec2
+            rec1[1] >= rec2[3])     // rec1 above rec2
+        {
+            return false;
+        }
 
-        return true;
-    }
+        return true;
+    }
 }
-
 ```
 
 ---
